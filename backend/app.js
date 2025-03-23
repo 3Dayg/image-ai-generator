@@ -5,6 +5,13 @@ import { generateImage } from './image.js';
 const app = express();
 app.use(express.json());
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
+
 app.post('/signup', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -25,7 +32,7 @@ app.post('/signup', async (req, res) => {
 });
 
 app.post('/login', async (req, res) => {
-  // add
+  // TODO add
   // wrong token
   // no token error differentiation
   try {

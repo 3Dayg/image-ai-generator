@@ -5,6 +5,8 @@ import db from './db.js';
 
 const secretKey = process.env.JWT_SECRET_KEY;
 
+// TODO Refresh token functionality
+
 export function createUser(email, password) {
   const user = db.prepare("SELECT * FROM users WHERE email = ?").get(email);
   if (user) {

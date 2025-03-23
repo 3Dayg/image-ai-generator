@@ -1,6 +1,6 @@
 POST http://localhost:3000/generate-image
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzQyNzI5NzQ5LCJleHAiOjE3NDI3MzMzNDl9.-6QW5p6MQCDtkj1HIR8wt7_SXlI6d9CqddrkUBdP-fA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzQyNzQzNTYzLCJleHAiOjE3NDI3NDcxNjN9.iBNuiuWrDNyZwcExpU2BvLth9Ru64dXurJDVBcd0ll4
 
 {
     "prompt":"A cat sitting in a hat with a hat looking at another hat",
