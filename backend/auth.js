@@ -36,3 +36,18 @@ export function login(email, password) {
 
   return token;
 }
+
+export function enforceAuth(req, res, next) {
+  const authHeader = req.headers.authorization;
+  if (!authHeader) {
+    return res.send(401, 'Unauthenticated');
+  }
+
+  const token = authHeader.split(" ")[1];
+  try {
+    jwt.verify(token, secretKey);
+    next();
+  } catch (err) {
+    return res.send(401, 'Unauthenticated');
+  }
+}

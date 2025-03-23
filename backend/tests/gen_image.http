@@ -1,0 +1,10 @@
+POST http://localhost:3000/generate-image
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzQyNzI5NzQ5LCJleHAiOjE3NDI3MzMzNDl9.-6QW5p6MQCDtkj1HIR8wt7_SXlI6d9CqddrkUBdP-fA
+
+{
+    "prompt":"A cat sitting in a hat with a hat looking at another hat",
+    "options":  {
+        "format": "png"
+    }
+}

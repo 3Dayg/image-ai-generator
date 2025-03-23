@@ -1,5 +1,6 @@
 import express from 'express';
-import { createUser, login } from './auth.js';
+import { createUser, enforceAuth, login } from './auth.js';
+import { generateImage } from './image.js';
 
 const app = express();
 app.use(express.json());
@@ -24,9 +25,13 @@ app.post('/signup', async (req, res) => {
 });
 
 app.post('/login', async (req, res) => {
+  // add
+  // wrong token
+  // no token error differentiation
   try {
     const { email, password } = req.body;
     const token = login(email, password);
+    console.log("token", token)
     res.send(200, 'Login successful', token);
   } catch (err) {
     if (err.status === 400) {
@@ -36,11 +41,12 @@ app.post('/login', async (req, res) => {
   }
 });
 
-app.post('/generate-image', async (req, res) => {
+app.post('/generate-image', enforceAuth, async (req, res) => {
   const { prompt, options } = req.body;
-  // options --> aspect ratio, format, quality
 
-
+  const { image, format } = await generateImage(prompt, options);
+  res.type(format);
+  res.send(201,image);
 });
 
 const port = process.env.PORT || 3000;
